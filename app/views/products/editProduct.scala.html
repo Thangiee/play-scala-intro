@@ -1,0 +1,20 @@
+@(productForm: Form[model.Product], product: model.Product)(implicit flash: Flash, lang: Lang)
+@import views.html.helper.twitterBootstrap._
+
+@main(Messages("products.form")) {
+    <h2>@Messages("products.form")</h2>
+
+    @helper.form(action = routes.Products.saveEdit(product.ean)) {
+        <fieldset>
+            <legend>
+                Edit: @product.name
+            </legend>
+            @helper.inputText(productForm("ean"), args = 'disabled → "disabled")
+            @helper.inputText(productForm("name"))
+            @helper.textarea(productForm("description"))
+        </fieldset>
+        <p>
+            <input type="submit" class="btn-primary" value="save">
+        </p>
+    }
+}
